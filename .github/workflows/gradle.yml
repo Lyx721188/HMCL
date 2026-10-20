@@ -1,6 +1,7 @@
 name: Java CI
 
 on:
+  workflow_dispatch:
   push:
   pull_request:
     paths-ignore:
@@ -42,6 +43,7 @@ jobs:
       with:
         name: HMCL-${{ env.SHORT_SHA }}-exe
         path: HMCL/build/libs/HMCL-*.exe
+        if-no-files-found: error
         archive: false
     - name: Upload SH
       uses: actions/upload-artifact@v7
